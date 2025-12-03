@@ -62,7 +62,7 @@ export default function Splash({ onComplete }: Props) {
             className="splash-box"
             initial={{ opacity: 0, y: 18, scale: 0.98, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ type: 'spring', stiffness: 520, damping: 34 }}
           >
             <div className="splash-title">Portofolio Atoshi</div>
             <div className="splash-lines">
@@ -72,7 +72,7 @@ export default function Splash({ onComplete }: Props) {
                   className="splash-line"
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.7, duration: 0.4 }}
+                  transition={{ delay: i * 0.7, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="prefix">{'>'}</span> {text}
                   {i === steps.length - 1 && <span className="cursor" />}
