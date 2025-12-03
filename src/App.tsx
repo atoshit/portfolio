@@ -37,18 +37,18 @@ function App() {
             hidden: { opacity: 0 },
             show: {
               opacity: 1,
-              transition: { staggerChildren: 0.14, delayChildren: 0.12 },
+              transition: { staggerChildren: 0.6, delayChildren: 0.6 },
             },
           }}
         >
           <motion.div
-            variants={{ hidden: { opacity: 0, y: -12, filter: 'blur(6px)' }, show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } } }}
+            variants={{ hidden: { opacity: 0, filter: 'blur(6px)' }, show: { opacity: 1, filter: 'blur(0px)', transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } } }}
           >
             <Header />
           </motion.div>
           <motion.main
             className="page-container"
-            variants={{ hidden: { opacity: 0, y: 12, scale: 0.98, filter: 'blur(6px)' }, show: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } } }}
+            variants={{ hidden: { opacity: 0, y: 12, scale: 0.98, filter: 'blur(6px)' }, show: { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)', transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } } }}
           >
             <AnimatePresence mode="wait" initial={false}>
               <Routes location={location} key={location.pathname}>
