@@ -1,9 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import Splash from './components/Splash'
 import Presentation from './pages/Presentation'
 import Experiences from './pages/Experiences'
 import Creations from './pages/Creations'
@@ -11,6 +12,7 @@ import Contact from './pages/Contact'
 
 function App() {
   const location = useLocation()
+  const [showSplash, setShowSplash] = useState(true)
   useEffect(() => {
     const handler = (e: PointerEvent) => {
       const x = (e.clientX / window.innerWidth) * 100
@@ -25,10 +27,14 @@ function App() {
 
   return (
     <div className="app-shell">
-      <Header />
-      <main className="page-container">
-        <AnimatePresence mode="wait" initial={false}>
-          <Routes location={location} key={location.pathname}>
+      {showSplash ? (
+        <Splash onComplete={() => setShowSplash(false)} />
+      ) : (
+        <>
+          <Header />
+          <main className="page-container">
+            <AnimatePresence mode="wait" initial={false}>
+              <Routes location={location} key={location.pathname}>
             <Route
               path="/"
               element={
@@ -81,10 +87,12 @@ function App() {
                 </motion.div>
               }
             />
-          </Routes>
-        </AnimatePresence>
-      </main>
-      <Footer />
+              </Routes>
+            </AnimatePresence>
+          </main>
+          <Footer />
+        </>
+      )}
     </div>
   )
 }
